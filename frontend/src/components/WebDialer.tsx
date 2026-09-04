@@ -150,7 +150,6 @@ export default function WebDialer() {
 
     try {
       await _vapi.start(ASSISTANT_ID);
-      _vapi.setMuted(false);
     } catch (e: unknown) {
       setError(e instanceof Error ? e.message : "Unknown error starting call");
       setStatus("idle");
