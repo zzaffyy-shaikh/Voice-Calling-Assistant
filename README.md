@@ -68,7 +68,7 @@ You need a `.env` file in the `backend/` directory:
 ```env
 DEBUG=True
 API_BASE_URL=http://localhost:8000
-VOICE_WEBHOOK_SECRET=mwstesting
+VOICE_WEBHOOK_SECRET=carecloud_vapi_secret_2026
 
 # Database Connection (FastAPI uses this)
 DATABASE_URL=postgresql+asyncpg://voiceai:voiceai@localhost:5433/voiceai

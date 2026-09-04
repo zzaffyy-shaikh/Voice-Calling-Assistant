@@ -92,7 +92,7 @@ def create_assistant():
                     },
                     "server": {
                         "url": server_url,
-                        "secret": "mwstesting"
+                        "secret": "carecloud_vapi_secret_2026"
                     }
                 },
                 {
@@ -125,7 +125,7 @@ def create_assistant():
                     },
                     "server": {
                         "url": server_url,
-                        "secret": "mwstesting"
+                        "secret": "carecloud_vapi_secret_2026"
                     }
                 },
                 {
@@ -154,7 +154,7 @@ def create_assistant():
                     },
                     "server": {
                         "url": server_url,
-                        "secret": "mwstesting"
+                        "secret": "carecloud_vapi_secret_2026"
                     }
                 }
             ]

@@ -5,7 +5,7 @@ def test_vapi_webhook():
     url = "http://localhost:8000/voice/tool-call"
     headers = {
         "Content-Type": "application/json",
-        "x-webhook-secret": "mwstesting"
+        "x-webhook-secret": "carecloud_vapi_secret_2026"
     }
 
     # Simulate Vapi's payload for registering a patient

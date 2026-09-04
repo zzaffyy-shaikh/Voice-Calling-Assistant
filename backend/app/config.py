@@ -10,7 +10,7 @@ class Settings(BaseSettings):
 
     debug: bool = False
     api_base_url: str = "http://localhost:8000"
-    voice_webhook_secret: str = "mwstesting"
+    voice_webhook_secret: str = "carecloud_vapi_secret_2026"
     allowed_origins: str = "*"
 
     database_url: str = "postgresql+asyncpg://voiceai:voiceai@db:5432/voiceai"
