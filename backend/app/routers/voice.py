@@ -150,8 +150,10 @@ async def voice_tool_call(
     request: Request,
     db: AsyncSession = Depends(get_db),
     x_webhook_secret: Optional[str] = Header(default=None),
+    x_vapi_secret: Optional[str] = Header(default=None),
 ):
-    _verify_secret(x_webhook_secret)
+    actual_secret = x_vapi_secret or x_webhook_secret
+    _verify_secret(actual_secret)
     payload = await request.json()
 
     logger.info("Vapi webhook received: %s", json.dumps(payload, indent=2, default=str))
