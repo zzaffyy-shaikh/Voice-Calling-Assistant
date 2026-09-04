@@ -105,7 +105,10 @@ async def _dispatch(db: AsyncSession, function_name: str, args: dict) -> Any:
     if function_name is None:
         return {"ignored": True}
     if function_name == "find_patient_by_phone":
-        patient = await patient_service.find_by_phone(db, args["phone_number"])
+        phone = args.get("phone_number")
+        if not phone:
+            return {"found": False, "error": "phone_number is required"}
+        patient = await patient_service.find_by_phone(db, phone)
         if patient is None:
             return {"found": False}
         return {"found": True, "patient": PatientOut.model_validate(patient).model_dump(mode="json")}
@@ -121,7 +124,14 @@ async def _dispatch(db: AsyncSession, function_name: str, args: dict) -> Any:
         return {"success": True, "patient": PatientOut.model_validate(patient).model_dump(mode="json")}
 
     if function_name == "update_patient":
-        patient_id = args.pop("patient_id")
+        patient_id_str = args.pop("patient_id", None)
+        if not patient_id_str:
+            return {"success": False, "errors": [{"msg": "patient_id is required"}]}
+        import uuid
+        try:
+            patient_id = uuid.UUID(patient_id_str)
+        except ValueError:
+            return {"success": False, "errors": [{"msg": "invalid patient_id format"}]}
         try:
             payload = PatientUpdate(**args)
         except ValidationError as e:
